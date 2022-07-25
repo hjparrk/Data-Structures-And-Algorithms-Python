@@ -1,6 +1,9 @@
 # Linked list in Python
 
 # Node class
+from tkinter import N
+
+
 class Node:
     
     # Function to initialise the Node object
@@ -43,8 +46,8 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
         self.length += 1
-        
         print("append " + str(self.tail.data))
+        return True
         
     """
         this function does not update the pointer to the tail node,
@@ -61,6 +64,7 @@ class LinkedList:
                 temp = temp.next
             temp.next = new_node
         self.length += 1
+        return True
         
     """
         Function to prepend a new node to the linked list
@@ -78,6 +82,7 @@ class LinkedList:
         
         self.length += 1
         print("prepend " + str(self.head.data))
+        return True
         
     """    
         Function to pop the tail node from the linked list
@@ -101,6 +106,7 @@ class LinkedList:
             self.tail = prev
             self.tail.next = None
         self.length -= 1  
+        return temp.data
      
     """ 
         this function does not update the pointer to the tail node,
@@ -121,7 +127,7 @@ class LinkedList:
         else:
             prev.next = None
         self.length -= 1    
-        
+        return temp.data
         
     """
         Function to pop the head node from the linked list
@@ -134,11 +140,26 @@ class LinkedList:
         
         temp = self.head
         self.head = temp.next
-        temp = None
+        temp.next = None
         self.length -= 1
         
         if self.length == 0:
             self.tail = None
+            
+        return temp.data
+    
+            
+    def get(self, index):
+        if self.length == 0:
+            return None
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for i in range(index):
+            temp = temp.next
+        print("get " + str(temp.data))
+        return temp.data
+                
             
     """
         Function to print all node's data iteratively from the head node to the tail
@@ -174,9 +195,8 @@ def main():
     linked_list.pop()
     linked_list.pop()
     linked_list.pop_first()
-    linked_list.pop_first()
-    linked_list.pop_first()
-    linked_list.pop_first()
+    linked_list.get(0)
+    
     # linked_list.append_no_tail(5)
     # linked_list.pop_no_tail()
     linked_list.print_list()
