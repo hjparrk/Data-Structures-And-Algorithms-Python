@@ -11,23 +11,29 @@ class Node:
 # Linked list class
 class LinkedList: 
     
-    # Function to initialise the LinkedList object
-    # Takes O(1) time complexity
+    """
+        Function to initialise the LinkedList object
+        Takes O(1) time complexity
+    """
     def __init__(self):
         self.length = 0 # length of the linked list
         self.head = None # A pointer to the head node of the list
         self.tail = None # A pointer to the tail node of the list
 
-    # Private function to create new Node (can only be accessed and called in this LinkedList class)
-     # Takes O(1) time complexity
+    """
+        Private function to create new Node (can only be accessed and called in this LinkedList class)
+        Takes O(1) time complexity
+    """
     def __createNode(self, data):
         new_node = Node(data)
         return new_node
     
-    # Function to append a new node to the linked list
-    # Takes O(1) time complexity as we know the tail node
-    # Having a pointer only to the head node, takes O(n) to append a new node 
-    # since it has to iterate all the node to reach the tail
+    """
+        Function to append a new node to the linked list
+        Takes O(1) time complexity as we know the tail node
+        Having a pointer only to the head node, takes O(n) to append a new node 
+        since it has to iterate all the node to reach the tail
+    """
     def append(self, data):
         new_node = self.__createNode(data)
         if self.length == 0 or self.head is None or self.tail is None:
@@ -39,10 +45,12 @@ class LinkedList:
         self.length += 1
         
         print("append " + str(self.tail.data))
-    
-    # this function does not update the pointer to the tail node,
-    # it is just to show the logic how the append function works without the pointer to the tail node
-    # Takes O(n) time complexity
+        
+    """
+        this function does not update the pointer to the tail node,
+        it is just to show the logic how the append function works without the pointer to the tail node
+        Takes O(n) time complexity
+    """
     def append_no_tail(self,data):
         new_node = self.__createNode(data)
         if self.length == 0 or self.head is None:
@@ -54,10 +62,25 @@ class LinkedList:
             temp.next = new_node
         self.length += 1
         
-    # Function to pop the tail node from the linked list
-    # Takes O(1) time complexity
-    # Not knowing the tail node, it has to iterate all nodes to the tail one
-    # So, it takes O(n) time complexity
+    def prepend(self,data):
+        new_node = self.__createNode(data)
+
+        if self.length == 0 or self.head is None or self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        
+        self.length += 1
+        print("prepend " + str(self.head.data))
+        
+    """    
+        Function to pop the tail node from the linked list
+        Takes O(1) time complexity
+        Not knowing the tail node, it has to iterate all nodes to the tail one
+        So, it takes O(n) time complexity
+    """
     def pop(self):
         if self.length == 0 or self.head is None or self.tail is None:
             return None
@@ -74,10 +97,12 @@ class LinkedList:
             self.tail = prev
             self.tail.next = None
         self.length -= 1  
-                  
-    # this function does not update the pointer to the tail node,
-    # it is just to show the logic how the pop function works without the pointer to the tail node
-    # Takes O(n) time complexity    
+     
+    """ 
+        this function does not update the pointer to the tail node,
+        it is just to show the logic how the pop function works without the pointer to the tail node
+        Takes O(n) time complexity    
+    """           
     def pop_no_tail(self):
         if self.length == 0 or self.head is None:
             return None
@@ -92,9 +117,11 @@ class LinkedList:
         else:
             prev.next = None
         self.length -= 1    
-            
-    # Function to print all node's data iteratively from the head node to the tail
-    # Takes O(n) time complexity, iterating through the whole list
+     
+    """
+        Function to print all node's data iteratively from the head node to the tail
+        Takes O(n) time complexity, iterating through the whole list
+    """        
     def print_list(self):
         # temporary pointer node (cursor)
         temp = self.head
@@ -120,6 +147,8 @@ def main():
     linked_list.append(2)
     linked_list.append(3)
     linked_list.append(4)
+    linked_list.prepend(5)
+    linked_list.prepend(10)
     linked_list.pop()
     linked_list.pop()
     # linked_list.append_no_tail(5)
