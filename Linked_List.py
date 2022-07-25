@@ -1,9 +1,6 @@
 # Linked list in Python
 
 # Node class
-from tkinter import N
-
-
 class Node:
     
     # Function to initialise the Node object
