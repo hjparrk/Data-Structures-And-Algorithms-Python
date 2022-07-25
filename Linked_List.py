@@ -164,7 +164,7 @@ class LinkedList:
         return temp
     
     """
-        Function to set the node's data according to the given index and data in the linked list
+        Function to set (update) the node's data according to the given index and data in the linked list
         Takes O(n) time complexity as get function itself takes O(n) time 
         despite the fact that changing data of the node takes only O(1) time
     """   
@@ -177,6 +177,26 @@ class LinkedList:
             return True    
         else:
             return False
+    
+    """
+        Function to insert the node according to the given index and data into the linked list
+        Takes O(n) time complexity
+    """      
+    def insert(self, index, data):
+        
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(data)
+        if index == self.length:
+            return self.append(data)
+        
+        new_node = self.__createNode(data)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+        return True
         
     """
         Function to print all node's data iteratively from the head node to the tail
@@ -214,6 +234,9 @@ def main():
     linked_list.pop_first()
     linked_list.get(0)
     linked_list.set(1,"Test set function")
+    linked_list.insert(0, "Woah")
+    linked_list.insert(2, 7)
+    linked_list.insert(linked_list.length, 10)
     # linked_list.append_no_tail(5)
     # linked_list.pop_no_tail()
     linked_list.print_list()
