@@ -62,6 +62,10 @@ class LinkedList:
             temp.next = new_node
         self.length += 1
         
+    """
+        Function to prepend a new node to the linked list
+        Takes O(1) time complexity
+    """    
     def prepend(self,data):
         new_node = self.__createNode(data)
 
