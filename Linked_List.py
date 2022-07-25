@@ -40,6 +40,20 @@ class LinkedList:
         
         print("append " + str(self.tail.data))
     
+    # this function does not update the pointer to the tail node,
+    # it is just to show the logic how the append function works without the pointer to the tail node
+    # Takes O(n) time complexity
+    def append_no_tail(self,data):
+        new_node = self.__createNode(data)
+        if self.length == 0 or self.head is None:
+            self.head = new_node
+        else:
+            temp = self.head
+            while temp.next:
+                temp = temp.next
+            temp.next = new_node
+        self.length += 1
+        
     # Function to pop the tail node from the linked list
     # Takes O(1) time complexity
     # Not knowing the tail node, it has to iterate all nodes to the tail one
@@ -59,11 +73,26 @@ class LinkedList:
         else:
             self.tail = prev
             self.tail.next = None
-        self.length -= 1            
-        
-        
-        
-        
+        self.length -= 1  
+                  
+    # this function does not update the pointer to the tail node,
+    # it is just to show the logic how the pop function works without the pointer to the tail node
+    # Takes O(n) time complexity    
+    def pop_no_tail(self):
+        if self.length == 0 or self.head is None:
+            return None
+        temp = self.head
+        prev = self.head
+        while temp.next:
+            prev = temp
+            temp = temp.next
+        print("pop " + str(temp.data))
+        if self.length == 1 or prev is temp:
+            self.head = None
+        else:
+            prev.next = None
+        self.length -= 1    
+            
     # Function to print all node's data iteratively from the head node to the tail
     # Takes O(n) time complexity, iterating through the whole list
     def print_list(self):
@@ -93,6 +122,8 @@ def main():
     linked_list.append(4)
     linked_list.pop()
     linked_list.pop()
+    # linked_list.append_no_tail(5)
+    # linked_list.pop_no_tail()
     linked_list.print_list()
     
     print(linked_list.length)
