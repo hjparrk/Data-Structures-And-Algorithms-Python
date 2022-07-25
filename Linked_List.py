@@ -1,6 +1,9 @@
 # Linked list in Python
 
 # Node class
+from os import link
+
+
 class Node:
     
     # Function to initialise the Node object
@@ -145,19 +148,36 @@ class LinkedList:
             
         return temp.data
     
-            
+    """
+        Function to get the node according to the given index in the linked list
+        Takes O(n) time complexity
+    """          
     def get(self, index):
         if self.length == 0:
-            return None
+            return False
         if index < 0 or index >= self.length:
-            return None
+            return False
         temp = self.head
         for i in range(index):
             temp = temp.next
         print("get " + str(temp.data))
-        return temp.data
-                
-            
+        return temp
+    
+    """
+        Function to set the node's data according to the given index and data in the linked list
+        Takes O(n) time complexity as get function itself takes O(n) time 
+        despite the fact that changing data of the node takes only O(1) time
+    """   
+    def set(self, index, data):
+        if self.length == 0:
+            return False
+        temp = self.get(index)
+        if temp:
+            temp.data = data
+            return True    
+        else:
+            return False
+        
     """
         Function to print all node's data iteratively from the head node to the tail
         Takes O(n) time complexity, iterating through the whole list
@@ -193,7 +213,7 @@ def main():
     linked_list.pop()
     linked_list.pop_first()
     linked_list.get(0)
-    
+    linked_list.set(1,"Test set function")
     # linked_list.append_no_tail(5)
     # linked_list.pop_no_tail()
     linked_list.print_list()
