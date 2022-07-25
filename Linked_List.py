@@ -1,8 +1,6 @@
 # Linked list in Python
 
 # Node class
-from os import link
-
 
 class Node:
     
