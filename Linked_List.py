@@ -132,14 +132,13 @@ class LinkedList:
             return None
         print("pop first " + str(self.head.data))
         
-        if self.length == 1 or self.head.next is None:
-            self.head = None
-            self.tail = None
-        else:
-            temp = self.head
-            self.head = temp.next
-            temp = None
+        temp = self.head
+        self.head = temp.next
+        temp = None
         self.length -= 1
+        
+        if self.length == 0:
+            self.tail = None
             
     """
         Function to print all node's data iteratively from the head node to the tail
@@ -177,7 +176,7 @@ def main():
     linked_list.pop_first()
     linked_list.pop_first()
     linked_list.pop_first()
-
+    linked_list.pop_first()
     # linked_list.append_no_tail(5)
     # linked_list.pop_no_tail()
     linked_list.print_list()
