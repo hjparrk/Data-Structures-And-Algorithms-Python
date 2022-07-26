@@ -2,6 +2,9 @@
 
 # Node class
 
+from os import link
+
+
 class Node:
     
     # Function to initialise the Node object
@@ -195,6 +198,23 @@ class LinkedList:
         temp.next = new_node
         self.length += 1
         return True
+    
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length -1:
+            return self.pop()
+        
+        prev = self.get(index-1)
+        temp = prev.next
+        
+        prev.next = temp.next
+        temp.next = None
+        self.length -= 1
+        
+        return temp
         
     """
         Function to print all node's data iteratively from the head node to the tail
@@ -235,6 +255,7 @@ def main():
     linked_list.insert(0, "Woah")
     linked_list.insert(2, 7)
     linked_list.insert(linked_list.length, 10)
+    linked_list.remove(2)
     # linked_list.append_no_tail(5)
     # linked_list.pop_no_tail()
     linked_list.print_list()
