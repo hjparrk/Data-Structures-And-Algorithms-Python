@@ -28,7 +28,6 @@ class DoublyLinkedList:
     
     def append(self):
         print("ha")
-        print("ho")
         return None
     
 def main():
