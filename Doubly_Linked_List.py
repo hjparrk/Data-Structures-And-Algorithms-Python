@@ -33,11 +33,4 @@ def main():
     
 if __name__ == "__main__":
     main()
-<<<<<<< HEAD
-    
-=======
     print("haha")
-        
-        
->>>>>>> doubly_linked_list
-        
