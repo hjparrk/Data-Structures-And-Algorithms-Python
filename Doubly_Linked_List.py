@@ -27,6 +27,7 @@ class DoublyLinkedList:
             current = current.next
     
     def append(self):
+        print("ha")
         return None
     
 def main():
