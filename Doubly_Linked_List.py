@@ -25,7 +25,10 @@ class DoublyLinkedList:
                 print("Node {}".format(str(current.data)))
                 
             current = current.next
-                
+    
+    def append(self):
+        return None
+    
 def main():
     
     doubly_linked_list = DoublyLinkedList()
