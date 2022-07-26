@@ -215,6 +215,18 @@ class LinkedList:
         self.length -= 1
         
         return temp
+    
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        prev = None
+        next = temp.next
+        for _ in range(self.length):
+            next = temp.next
+            temp.next = prev
+            prev = temp
+            temp = next
         
     """
         Function to print all node's data iteratively from the head node to the tail
@@ -256,8 +268,12 @@ def main():
     linked_list.insert(2, 7)
     linked_list.insert(linked_list.length, 10)
     linked_list.remove(2)
-    # linked_list.append_no_tail(5)
-    # linked_list.pop_no_tail()
+    linked_list.append_no_tail(5)
+    linked_list.pop_no_tail()
+    linked_list.print_list()
+    
+    linked_list.reverse()
+    
     linked_list.print_list()
     
     print(linked_list.length)
