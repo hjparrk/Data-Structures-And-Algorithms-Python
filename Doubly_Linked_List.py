@@ -111,7 +111,32 @@ class DoublyLinkedList:
         else:
             return False
         
-    
+    def insert(self, index, data):
+        
+        if index < 0 or index > self.length:
+            return False
+        
+        if index == 0:
+            return self.prepend(data)
+        elif index == self.length:
+            return self.append(data)
+        else:
+            new_node = self.__createNode(data)
+            prev = self.get(index -1)
+            next = prev.next
+            
+            prev.next = new_node
+            new_node.prev = prev
+            
+            next.prev = new_node
+            new_node.next = next
+            
+            return True
+            
+
+            
+            
+            
     
         
 def main():
@@ -123,6 +148,8 @@ def main():
     # doubly_linked_list.pop_first()
     doubly_linked_list.print_list()
     doubly_linked_list.set(0, 13)
+    doubly_linked_list.prepend(11)
+    doubly_linked_list.insert(2, "Seoul")
     doubly_linked_list.print_list()
     
     print("\n{}".format(doubly_linked_list.length))
