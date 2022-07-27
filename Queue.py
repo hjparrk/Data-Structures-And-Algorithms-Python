@@ -41,7 +41,30 @@ class Queue:
         self.length += 1
         
         return True
+    
+    def dequeue(self):
         
+        if self.length == 0 or self.first is None:
+            return None
+        else:
+            tmp = self.first
+            self.first = tmp.next
+            tmp.next = None
+            self.length -= 1
+            return tmp
+    
+    def front(self):
+        
+        if self.length == 0 or self.first is None:
+            return None
+        else:
+            return self.first.data
+    
+    def rear(self):
+        if self.length == 0 or self.last is None:
+            return None
+        else:
+            return self.last.data
     
 def main():
 
@@ -50,6 +73,14 @@ def main():
     queue.enqueue(2)
     queue.enqueue(3)
     queue.print_queue()
+    print(queue.front())
+    print(queue.rear())
+    queue.dequeue()
+    queue.dequeue()
+    queue.print_queue()
+    print(queue.front())
+    print(queue.rear())
+    
     
 
 if __name__ == "__main__":
