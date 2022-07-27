@@ -40,12 +40,31 @@ class DoublyLinkedList:
             
         self.length += 1  
         return True
-    
+
+    def pop(self):
+        
+        if self.length == 0:
+            return None
+        elif self.length == 1:
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return self.head
+        else:
+            current = self.tail
+            self.tail = self.tail.prev
+            self.tail.next = None
+            current.prev = None
+            self.length -= 1
+            return current
+
 def main():
     
     doubly_linked_list = DoublyLinkedList()
     doubly_linked_list.append(1)
     doubly_linked_list.append(2)
+    doubly_linked_list.pop()
+    doubly_linked_list.pop()
     doubly_linked_list.print_list()
     
     print("\n{}".format(doubly_linked_list.length))
