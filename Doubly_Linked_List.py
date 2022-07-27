@@ -176,10 +176,6 @@ class DoublyLinkedList:
             prev = current
             current = next
             
-            
-
-
-    
         
 def main():
     
