@@ -180,7 +180,6 @@ class LinkedList:
         Takes O(n) time complexity
     """      
     def insert(self, index, data):
-        
         if index < 0 or index > self.length:
             return False
         if index == 0:
