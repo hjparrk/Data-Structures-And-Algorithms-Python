@@ -151,9 +151,9 @@ class LinkedList:
     """          
     def get(self, index):
         if self.length == 0:
-            return False
+            return None
         if index < 0 or index >= self.length:
-            return False
+            return None
         temp = self.head
         for i in range(index):
             temp = temp.next
