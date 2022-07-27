@@ -33,7 +33,7 @@ class Stack:
     
     def push(self, data):
         
-        new_node = Node(data)
+        new_node = self.__createNode(data)
         new_node.next = self.top
         self.top = new_node
         self.size += 1
