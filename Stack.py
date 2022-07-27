@@ -51,7 +51,14 @@ class Stack:
         self.top = tmp.next
         tmp.next = None
         self.size -= 1
-        return tmp
+        return tmp.data
+    
+    def peek(self):
+        
+        if self.size == 0 or self.top is None:
+            return None
+        
+        return self.top.data
     
 def main():
     stack = Stack()
@@ -61,6 +68,10 @@ def main():
     stack.pop()
     stack.push(5)
     stack.print_stack()
+    print(stack.peek())
+    stack.pop()
+    stack.print_stack()
+    print(stack.peek())
     print("top: {}".format(stack.top.data))
     print("size: {}".format(stack.getSize()))
     print(stack.isEmpty())
