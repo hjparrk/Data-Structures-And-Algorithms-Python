@@ -42,14 +42,27 @@ class Stack:
             self.isEmpty = False
         return True
         
-
+    def pop(self):
+        
+        if self.size == 0 or self.top is None:
+            return None
+        
+        tmp = self.top
+        self.top = tmp.next
+        tmp.next = None
+        self.size -= 1
+        return tmp
+    
 def main():
     stack = Stack()
     stack.push(1)
     stack.push(2)
     stack.push(3)
+    stack.pop()
+    stack.push(5)
     stack.print_stack()
-    print(stack.getSize())
+    print("top: {}".format(stack.top.data))
+    print("size: {}".format(stack.getSize()))
     print(stack.isEmpty())
     
 if __name__ == "__main__":
