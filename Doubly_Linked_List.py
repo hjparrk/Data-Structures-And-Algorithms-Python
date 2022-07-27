@@ -160,7 +160,25 @@ class DoublyLinkedList:
                 
             return current            
         
+    def reverse(self):
+        
+        if self.length == 0:
+            return False
+        
+        current = self.head
+        self.head = self.tail
+        self.tail = current
+        prev = None
+        next = current.next
+        for _ in range(self.length):
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
             
+            
+
+
     
         
 def main():
@@ -168,13 +186,15 @@ def main():
     doubly_linked_list = DoublyLinkedList()
     doubly_linked_list.append(1)
     doubly_linked_list.append(2)
+    doubly_linked_list.append(3)
     # doubly_linked_list.pop()
     # doubly_linked_list.pop_first()
-    doubly_linked_list.print_list()
-    doubly_linked_list.set(0, 13)
-    doubly_linked_list.prepend(11)
-    doubly_linked_list.insert(2, "Seoul")
-    doubly_linked_list.remove(doubly_linked_list.length -1)
+    # doubly_linked_list.print_list()
+    # doubly_linked_list.set(0, 13)
+    # doubly_linked_list.prepend(11)
+    # doubly_linked_list.insert(2, "Seoul")
+    # doubly_linked_list.remove(doubly_linked_list.length -1)
+    doubly_linked_list.reverse()
     doubly_linked_list.print_list()
     
     print("\n{}".format(doubly_linked_list.length))
