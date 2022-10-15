@@ -1,3 +1,7 @@
+from math import fabs
+from tempfile import tempdir
+
+
 class Node:
     
     def __init__(self, data):
@@ -32,7 +36,17 @@ class Bst:
                     return True
                 temp = temp.right        
             
-        
+    def contains(self, data): 
+        temp = self.root
+        while (temp is not None):
+            if data < temp.data:
+                temp = temp.left
+            elif data > temp.data:
+                temp = temp.right
+            else:
+                return True
+        return False
+
 
 def main():
     
@@ -46,6 +60,12 @@ def main():
     print(bst.root.left.data)
     print(bst.root.left.right.data)
     print(bst.root.right.data)
+
+    print(bst.contains(3))
+    print(bst.contains(1))
+    print(bst.contains(2))
+    print(bst.contains(5))
+    print(bst.contains(4))
     
     
     
