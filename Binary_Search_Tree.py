@@ -38,7 +38,7 @@ class Bst:
             
     def contains(self, data): 
         temp = self.root
-        while (temp is not None):
+        while temp is not None:
             if data < temp.data:
                 temp = temp.left
             elif data > temp.data:
@@ -46,6 +46,15 @@ class Bst:
             else:
                 return True
         return False
+
+    def min_data(self):
+        temp = self.root
+        if temp is None:
+            return -1
+        while temp.left is not None:
+            temp = temp.left
+        return temp.data
+
 
 
 def main():
@@ -66,6 +75,8 @@ def main():
     print(bst.contains(2))
     print(bst.contains(5))
     print(bst.contains(4))
+
+    print(bst.min_value_node())
     
     
     
